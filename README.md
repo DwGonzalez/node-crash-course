@@ -1,7 +1,5 @@
-# Lesson-7
+# Lesson-8
 
-- View engines
-- EJS
-- Passing data into views
-- Partial templates
-- Adding CSS to views
+- What is Middleware?
+  - Is any code which runs on the server between getting a request and sending a response.
+-
