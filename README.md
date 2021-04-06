@@ -1,8 +1,7 @@
-# Lesson-10
+# Lesson-11
 
-- Request Types
-  - GET: request to get a resource.
-  - POST: request to create new data.
-  - DELETE: request to delete data.
-  - PUT: request to update data.
-- Route parameters
+- Express router
+- MVC basics
+  - Model, View, Controller.
+  - MVC is a way of structuring our code & files.
+  - Keeps code more modular, reusable & easier to read.
