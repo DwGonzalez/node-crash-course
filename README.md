@@ -1,7 +1,8 @@
-# Lesson-11
+# Blog App
 
-- Express router
-- MVC basics
-  - Model, View, Controller.
-  - MVC is a way of structuring our code & files.
-  - Keeps code more modular, reusable & easier to read.
+- Very basic blog app with Node.js
+- Server-side rendering
+- MongoDB
+- Basic MVC
+- EJS as a View Engine
+- Routes
