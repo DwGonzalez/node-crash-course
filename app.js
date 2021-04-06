@@ -26,6 +26,7 @@ app.set('view engine', 'ejs')
 
 // middleware & static files
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // routes
@@ -38,9 +39,13 @@ app.get('/about', (req, res) => {
 });
 
 // blog routes
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create a new Blog' });
+});
+
 app.get('/blogs', (req, res) => {
     Blog.find().sort({ createdAt: -1 })
-        .then((result) => {
+        .then(result => {
             res.render('index', {
                 title: 'All Blogs',
                 blogs: result
@@ -52,8 +57,45 @@ app.get('/blogs', (req, res) => {
 
 });
 
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: 'Create a new Blog' });
+app.post('/blogs', (req, res) => {
+    const blog = new Blog(req.body);
+
+    blog.save()
+        .then(result => {
+            res.redirect('/blogs');
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+app.get('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(result => {
+            if (result === null) {
+                console.log(result);
+                throw err;
+            } else {
+                res.render('details', { blog: result, title: 'Blog Details' });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('404', { title: 'Blog not found' });
+        });
+});
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id;
+
+    Blog.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/blogs' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 // 404 page
