@@ -1,7 +1,7 @@
-# Lesson-6
+# Lesson-7
 
-- What is express?
-- Creating an express app
-- Routing and html pages with express
-- Redirects with express
-- 404 pages
+- View engines
+- EJS
+- Passing data into views
+- Partial templates
+- Adding CSS to views
